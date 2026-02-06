@@ -7,6 +7,9 @@ const RiceQuiz = () => {
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
 
+  // Body text utility (responsive so it doesn’t overwhelm small screens)
+  const bodyTextClass = "text-[1.6em] md:text-[2.25em] leading-[1.35]";
+
   const questions = [
     {
       id: 1,
@@ -81,7 +84,7 @@ const RiceQuiz = () => {
     },
     risotto: {
       name: "Risotto, the Slow Burn",
-      displayName: "Risotto", 
+      displayName: "Risotto",
       image: "/images/Risotto.svg",
       tagline: "You believe good things take time. You're patient, present, and attentive, especially when something matters to you. You trust the process.",
       history: "Introduced to Italy in the 14th-15th century. Northern Italy's wetlands turned out to be perfect for growing short-grain rice.",
@@ -101,7 +104,7 @@ const RiceQuiz = () => {
 
   const handleAnswer = (value) => {
     setAnswers({ ...answers, [currentQuestion]: value });
-    
+
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -120,7 +123,7 @@ const RiceQuiz = () => {
     Object.values(answers).forEach(answer => {
       counts[answer]++;
     });
-    
+
     const maxCount = Math.max(...Object.values(counts));
     const winners = Object.keys(counts).filter(key => counts[key] === maxCount);
     return winners[Math.floor(Math.random() * winners.length)];
@@ -135,7 +138,7 @@ const RiceQuiz = () => {
   if (showResult) {
     const resultType = calculateResult();
     const result = results[resultType];
-    
+
     return (
       <>
         <PaddyFieldBackground />
@@ -158,8 +161,8 @@ const RiceQuiz = () => {
               {/* Pixel character image with shadow */}
               <div className="flex justify-center mb-4">
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                  <img 
-                    src={result.image} 
+                  <img
+                    src={result.image}
                     alt={result.displayName}
                     className="w-32 h-32 object-contain drop-shadow-2xl"
                     style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))' }}
@@ -174,8 +177,8 @@ const RiceQuiz = () => {
                 {result.name}
               </h2>
 
-              {/* Tagline */}
-              <p className="text-base font-medium text-black leading-relaxed mb-6 drop-shadow-sm">
+              {/* Tagline (BODY TEXT SIZE UPDATED) */}
+              <p className={`${bodyTextClass} font-medium text-black mb-6 drop-shadow-sm`}>
                 {result.tagline}
               </p>
 
@@ -184,7 +187,7 @@ const RiceQuiz = () => {
                 <button className="bg-white/60 backdrop-blur-sm border-2 border-black/20 rounded-full px-5 py-2 text-sm font-bold text-black mb-3 shadow-md">
                   History
                 </button>
-                <p className="text-sm text-black leading-relaxed bg-white/30 backdrop-blur-sm rounded-lg p-3">
+                <p className={`${bodyTextClass} text-black bg-white/30 backdrop-blur-sm rounded-lg p-3`}>
                   {result.history}
                 </p>
               </div>
@@ -195,7 +198,7 @@ const RiceQuiz = () => {
                   <span>✿</span> fun fact!
                 </button>
                 <div className="border-2 border-dashed border-black/30 rounded-lg p-3 bg-white/50 backdrop-blur-sm shadow-md">
-                  <p className="text-sm text-black leading-relaxed">
+                  <p className={`${bodyTextClass} text-black`}>
                     {result.funFact}
                   </p>
                 </div>
@@ -206,7 +209,7 @@ const RiceQuiz = () => {
                 <button className="bg-white/60 backdrop-blur-sm border-2 border-black/20 rounded-full px-5 py-2 text-sm font-bold text-black mb-3 shadow-md">
                   Reflection
                 </button>
-                <p className="text-sm text-black leading-relaxed italic bg-white/30 backdrop-blur-sm rounded-lg p-3">
+                <p className={`${bodyTextClass} text-black italic bg-white/30 backdrop-blur-sm rounded-lg p-3`}>
                   {result.reflection}
                 </p>
               </div>
@@ -222,7 +225,7 @@ const RiceQuiz = () => {
 
             {/* Footer text */}
             <p className="text-center text-sm text-black mt-4 font-medium drop-shadow-lg bg-white/50 backdrop-blur-sm rounded-full px-4 py-2 inline-block mx-auto w-full">
-              Vibe coded by Erina Suzuki 
+              Vibe coded by Erina Suzuki
             </p>
           </div>
         </div>
@@ -276,7 +279,8 @@ const RiceQuiz = () => {
                       <span className="flex-shrink-0 w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold mr-3 text-sm shadow-md">
                         {String.fromCharCode(65 + index)}
                       </span>
-                      <span className="text-black font-medium group-hover:font-bold">
+                      {/* Option text (BODY TEXT SIZE UPDATED) */}
+                      <span className={`${bodyTextClass} text-black font-medium group-hover:font-bold`}>
                         {option.text}
                       </span>
                     </div>
