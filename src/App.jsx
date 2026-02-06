@@ -7,7 +7,6 @@ const RiceQuiz = () => {
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
 
-  // Body text utility (responsive so it doesn’t overwhelm small screens)
   const bodyTextClass = "text-[1.6em] md:text-[2.25em] leading-[1.35]";
 
   const questions = [
