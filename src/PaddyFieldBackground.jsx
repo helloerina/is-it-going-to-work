@@ -120,7 +120,7 @@ export const PaddyFieldBackground = () => {
       ctx.drawImage(bgCanvas, 0, 0);
       
       // Then draw moving clouds on top
-      cloudOffset += 0.1; // Slow, gentle drift
+      cloudOffset += 0.2; // Slow, gentle drift
       if (cloudOffset >= canvas.width) {
         cloudOffset = 0;
       }
