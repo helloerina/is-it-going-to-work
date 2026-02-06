@@ -7,7 +7,7 @@ const RiceQuiz = () => {
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
 
-  const bodyTextClass = "text-[2.6em] md:text-[2.25em] leading-[1.75]";
+  const bodyTextClass = "text-[1.8em] md:text-[2.25em] leading-[1.45]";
 
   const questions = [
     {
